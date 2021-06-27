@@ -33,7 +33,7 @@
 
 
       <ul class= "list-unstyled">
-        <li class="row time-block" name=9>
+        <li class="row time-block" name=09>
           <div class="col-md-1 hour">
             9AM
           </div>
@@ -73,8 +73,8 @@
             <i class="fas fa-save"></i>
           </button>
         </li>
-        <li class="row time-block">
-          <div class="col-md-1 hour" name=13>
+        <li class="row time-block" name="13">
+          <div class="col-md-1 hour">
             1PM
           </div>
           <textarea class="col-md-10 description">
@@ -130,20 +130,21 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
     <script type="text/javascript">
       var currentDate = new Date();
+      //var currentDate = moment("14:04", "HH:mm")
       var correctDate = moment(currentDate).format('dddd, MMMM Do')
       console.log(correctDate);
       currentDayEL = document.getElementById("currentDay").innerHTML = (correctDate);
       
-      var hourFinder = moment(currentDate).format("H");
+      var hourFinder = moment(currentDate).format("HH");
       console.log(hourFinder);
 
       $('.time-block').each(function(){
-        if (name < hourFinder){
+        if ($(this).attr("name") < hourFinder){
           $(this).removeClass("future");
           $(this).removeClass("present");
           $(this).addClass("past");
         }
-        else if (name === hourFinder){
+        else if ($(this).attr("name") === hourFinder){
           $(this).removeClass("past");
           $(this).removeClass("future");
           $(this).addClass("present");
